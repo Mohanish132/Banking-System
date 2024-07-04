@@ -121,15 +121,15 @@ public class AccountManager {
                     double current_balance = resultSet.getDouble("balance");
                     if (amount<=current_balance){
 
-                        // Write debit and credit queries
+                       
                         String debit_query = "UPDATE Accounts SET balance = balance - ? WHERE account_number = ?";
                         String credit_query = "UPDATE Accounts SET balance = balance + ? WHERE account_number = ?";
 
-                        // Debit and Credit prepared Statements
+                      
                         PreparedStatement creditPreparedStatement = connection.prepareStatement(credit_query);
                         PreparedStatement debitPreparedStatement = connection.prepareStatement(debit_query);
 
-                        // Set Values for debit and credit prepared statements
+                       
                         creditPreparedStatement.setDouble(1, amount);
                         creditPreparedStatement.setLong(2, receiver_account_number);
                         debitPreparedStatement.setDouble(1, amount);
